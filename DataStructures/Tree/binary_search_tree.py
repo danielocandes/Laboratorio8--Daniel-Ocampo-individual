@@ -43,7 +43,18 @@ def insert_node(root, key, value):
     return root 
 
 def get(my_bst, key):
-    pass
+    flag = True
+    current = my_bst['root']
+    while current != None:
+        comparison = default_compare(key, current['key'])
+        if comparison == -1:
+            current = current['left']
+        elif comparison == 1:
+            current = current['right']
+        else:
+            return current['value']
+    
+    return None
 
 def remove(my_bst, key):
     pass
