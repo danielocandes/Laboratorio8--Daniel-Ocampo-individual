@@ -1,6 +1,6 @@
 from DataStructures.Tree import binary_search_tree as bst
 from DataStructures.Tree import bst_node as bst_node
-from DataStructures.Utils.utils import handle_not_implemented
+import pytest
 
 
 def setup_tests():
@@ -71,7 +71,7 @@ def setup_unbalanced():
     
     return unbalanced
 
-@handle_not_implemented
+#@pytest.mark.skip(reason="No implementado aun")
 def test_new_binary_search_tree():
     empty_bst = bst.new_map()
 
@@ -81,7 +81,7 @@ def test_new_binary_search_tree():
     assert empty_bst["type"] == "BST"
 
 
-@handle_not_implemented
+#@pytest.mark.skip(reason="No implementado aun")
 def test_put():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -147,7 +147,7 @@ def test_put():
     assert three_bst["root"]["left"]["size"] == 3
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_get():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -165,7 +165,7 @@ def test_get():
     assert bst.get(three_bst, 15) is None
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_remove():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -217,7 +217,7 @@ def test_remove():
     assert seven_bst["root"]["right"]["left"]["key"] == 50
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_contains():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -235,7 +235,7 @@ def test_contains():
     assert not bst.contains(three_bst, 15)
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_size():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -251,7 +251,7 @@ def test_size():
     assert bst.size(seven_bst) == 7
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_is_empty():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -263,7 +263,7 @@ def test_is_empty():
     assert not bst.is_empty(three_bst)
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_key_set():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -283,7 +283,7 @@ def test_key_set():
     assert key_set["elements"][2] == 10
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_value_set():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -303,7 +303,7 @@ def test_value_set():
     assert value_set["elements"][2] == 100
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_min_key():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -319,7 +319,7 @@ def test_min_key():
     assert bst.min_key(seven_bst) == 10
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_max_key():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -335,7 +335,7 @@ def test_max_key():
     assert bst.max_key(seven_bst) == 70
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_delete_min():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -363,7 +363,7 @@ def test_delete_min():
     assert seven_bst["root"]["left"]["right"] is not None
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_delete_max():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -394,7 +394,7 @@ def test_delete_max():
     assert seven_bst["root"]["right"]["left"]["key"] == 50
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_floor():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -419,7 +419,7 @@ def test_floor():
     assert bst.floor(seven_bst, 75) == 70
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_ceiling():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -444,7 +444,7 @@ def test_ceiling():
     assert bst.ceiling(seven_bst, 75) is None
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_select():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -468,7 +468,7 @@ def test_select():
     assert bst.select(seven_bst, 7) == None
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_rank():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -496,7 +496,7 @@ def test_rank():
     assert bst.rank(seven_bst, 75) == 7
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_height():
     empty_bst = setup_tests()
     one_bst = setup_one_node()
@@ -521,7 +521,7 @@ def test_height():
     assert bst.height(unbalanced_bst) == 5
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_keys():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -554,7 +554,7 @@ def test_keys():
     assert keys["elements"][6] == 70
 
 
-@handle_not_implemented
+@pytest.mark.skip(reason="No implementado aun")
 def test_values():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()

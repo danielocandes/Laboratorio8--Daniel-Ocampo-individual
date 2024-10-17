@@ -1,32 +1,46 @@
-from DataStructures.Tree import bst_node as bn
+from . import bst_node as bn
 
 def new_map():
     map = {'root': None,
            'type': 'BST'}
+    return map
     
 
 def put(my_bst, key, value):
-    pair = bn.new_node(key, value)
+    if my_bst['root'] == None:
+        my_bst['root'] = bn.new_node(key, value)
+        return my_bst
+    
     insert_node(my_bst['root'], key, value)
+    
+    return my_bst
 
 def insert_node(root, key, value):
+    
     if default_compare(key, root['key']) == -1:
         if root['left'] == None:
             root['left'] = bn.new_node(key, value)
+            root['size'] += 1
         else:
-            insert_node(root['left'], key, value)
+            old_size = root['left']['size']
+            insert = insert_node(root['left'], key, value)
+            if insert['size'] > old_size:
+                root['size'] += 1
     
     elif default_compare(key, root['key']) == 1:
         if root['right'] == None:
             root['right'] = bn.new_node(key, value)
+            root['size'] += 1
         else:
-            insert_node(root['right'], key, value)
-            
+            old_size = root['right']['size']
+            insert = insert_node(root['right'], key, value)
+            if insert['size'] > old_size:
+                root['size'] += 1
+    
     else:
-        new_node = bn.new_node(key, value)
-        new_node['right'], new_node['left'] = root['right'], root['left']
-        
-        root = new_node
+        root['value'] = value
+    
+    return root 
 
 def get(my_bst, key):
     pass
