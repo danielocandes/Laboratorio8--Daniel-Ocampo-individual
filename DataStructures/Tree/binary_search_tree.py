@@ -5,7 +5,6 @@ def new_map():
            'type': 'BST'}
     return map
     
-
 def put(my_bst, key, value):
     if my_bst['root'] == None:
         my_bst['root'] = bn.new_node(key, value)
