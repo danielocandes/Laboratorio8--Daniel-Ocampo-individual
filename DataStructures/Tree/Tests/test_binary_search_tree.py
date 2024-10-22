@@ -449,7 +449,7 @@ def test_ceiling():
     assert bst.ceiling(seven_bst, 75) is None
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_select():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()

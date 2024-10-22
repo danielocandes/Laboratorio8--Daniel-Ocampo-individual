@@ -138,6 +138,7 @@ def size_tree(root):
         size += size_tree(root['right'])
     return size
 
+
 def is_empty(my_bst):
     return True if my_bst['root']==None else False
 
@@ -288,7 +289,25 @@ def ceiling_key(root, key):
 
 
 def select(my_bst, pos):
-    pass
+    if is_empty(my_bst): return None
+    #if my_bst['root']['size'] < pos: return None
+    
+    return select_key(my_bst['root'], pos)
+    
+
+def select_key(root, key):
+    print (root, key)
+    if root == None: return root
+    
+    left_size = size(root['left'])
+    
+    if left_size > key:
+        return select_key(root['left'], key)
+    elif left_size < key:
+        return select_key(root['right'], key - left_size - 1)
+    else:
+        return root
+            
 
 def rank(my_bst, key):
     pass
@@ -300,9 +319,6 @@ def keys(my_bst, key_lo, key_hi):
     pass
 
 def values(my_bst, key_lo, key_hi):
-    pass
-
-def select_key(root, key):
     pass
 
 def rank_keys(root, key):
