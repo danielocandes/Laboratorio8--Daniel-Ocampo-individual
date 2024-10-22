@@ -308,20 +308,20 @@ def test_value_set():
     assert value_set["elements"][2] == 100
 
 
-@pytest.mark.skip(reason="No implementado aun")
-def test_min_key():
+#@pytest.mark.skip(reason="No implementado aun")
+def test_left_key():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
     seven_bst = setup_seven_nodes()
 
     # Verificar la llave mínima de un árbol vacío
-    assert bst.min_key(empty_bst) is None
+    assert bst.left_key(empty_bst) is None
 
     # Verificar la llave mínima de un árbol con 3 nodos
-    assert bst.min_key(three_bst) == 1
+    assert bst.left_key(three_bst) == 1
 
     # Verificar la llave mínima de un árbol con 7 nodos
-    assert bst.min_key(seven_bst) == 10
+    assert bst.left_key(seven_bst) == 10
 
 
 @pytest.mark.skip(reason="No implementado aun")

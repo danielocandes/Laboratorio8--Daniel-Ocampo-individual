@@ -180,10 +180,15 @@ def value_set_tree(root, value_list):
     return value_list
 
 def left_key(my_bst):
-    pass
+    if is_empty(my_bst): return None
+    
+    return left_key_node(my_bst['root'])
 
 def left_key_node(root):
-    pass
+    if root['left'] == None:
+        return root
+    else:
+        return left_key_node(root['left'])
 
 def right_key(my_bst):
     pass
