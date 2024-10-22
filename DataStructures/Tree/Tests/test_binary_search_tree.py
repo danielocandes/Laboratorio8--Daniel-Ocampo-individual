@@ -424,7 +424,7 @@ def test_floor():
     assert bst.floor(seven_bst, 75) == 70
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_ceiling():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
