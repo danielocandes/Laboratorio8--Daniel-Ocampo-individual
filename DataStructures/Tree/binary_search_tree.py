@@ -114,13 +114,30 @@ def removal_node_check(root, key, direction):
         return remove_node(root[direction], key)
 
 def contains(my_bst, key):
-    pass
+    result = get(my_bst, key)
+    return False if result == None else True
 
 def size(my_bst):
-    pass
+    if is_empty(my_bst): return 0
+    size = 1
+    
+    if my_bst['root']['left'] != None:
+        size += size_tree(my_bst['root']['left'])
+    if my_bst['root']['right'] != None:
+        size += size_tree(my_bst['root']['right'])
+    
+    return size
+    
+def size_tree(root):
+    size = 1
+    if root['left'] != None:
+        size += size_tree(root['left'])
+    if root['right'] != None:
+        size += size_tree(root['right'])
+    return size
 
 def is_empty(my_bst):
-    pass
+    return True if my_bst['root']==None else False
 
 def key_set(my_bst):
     pass
@@ -161,10 +178,6 @@ def keys(my_bst, key_lo, key_hi):
 def values(my_bst, key_lo, key_hi):
     pass
 
-
-
-def size_tree(root):
-    pass
 
 def value_set_tree(root, value_list):
     pass

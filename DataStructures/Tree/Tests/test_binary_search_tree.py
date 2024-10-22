@@ -222,7 +222,7 @@ def test_remove():
     assert seven_bst["root"]["right"]["left"]["key"] == 50
     print ('test 6 passed')
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_contains():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -240,7 +240,7 @@ def test_contains():
     assert not bst.contains(three_bst, 15)
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_size():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
