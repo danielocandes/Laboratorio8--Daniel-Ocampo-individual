@@ -42,18 +42,28 @@ def insert_node(root, key, value):
     return root 
 
 def get(my_bst, key):
-    flag = True
-    current = my_bst['root']
-    while current != None:
-        comparison = default_compare(key, current['key'])
-        if comparison == -1:
-            current = current['left']
-        elif comparison == 1:
-            current = current['right']
-        else:
-            return current['value']
+    if my_bst['root'] == None:
+        return None
     
-    return None
+    comparison = default_compare(key, bn.get_key(my_bst['root']))
+    if comparison == 0:
+        return my_bst['root']['value']
+    else:
+        return get_node(my_bst['root'], key)
+
+def get_node(root, key):
+    if root == None:
+        return None
+    
+    comparison = default_compare(key, bn.get_key(root))
+    if comparison == 0:
+        return root['value']
+    elif comparison == -1:
+        return get_node(root['left'], key)
+    elif comparison == 1:
+        return get_node(root['right'], key)
+    else: 
+        return None
 
 def remove(my_bst, key):
     pass
@@ -106,9 +116,6 @@ def keys(my_bst, key_lo, key_hi):
 def values(my_bst, key_lo, key_hi):
     pass
 
-def get_node(root, key):
-    pass
-
 def remove_node(root, key):
     pass
 
@@ -155,6 +162,8 @@ def values_range(root, key_lo, key_hi, list_values):
     pass
 
 def default_compare(key, element):
+    if element == None:
+        return None
     if key > element:
         return 1
     elif key == element:

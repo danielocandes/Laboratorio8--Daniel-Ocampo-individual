@@ -154,16 +154,17 @@ def test_get():
 
     # Obtener un valor de un árbol vacío
     assert bst.get(empty_bst, 1) is None
-
+    print ('test 1 passed')
     # Obtener un valor de un árbol con 3 nodos
     assert bst.get(three_bst, 1) == 10
     assert bst.get(three_bst, 5) == 50
     assert bst.get(three_bst, 10) == 100
-
+    print ('test 2 passed')
+    
     # Obtener un valor que no existe en un árbol con 3 nodos
     assert bst.get(three_bst, 0) is None
     assert bst.get(three_bst, 15) is None
-
+    print ('test 3 passed')
 
 @pytest.mark.skip(reason="No implementado aun")
 def test_remove():
