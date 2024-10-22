@@ -324,20 +324,20 @@ def test_left_key():
     assert bst.left_key(seven_bst) == 10
 
 
-@pytest.mark.skip(reason="No implementado aun")
-def test_max_key():
+#@pytest.mark.skip(reason="No implementado aun")
+def test_right_key():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
     seven_bst = setup_seven_nodes()
 
     # Verificar la llave máxima de un árbol vacío
-    assert bst.max_key(empty_bst) is None
+    assert bst.right_key(empty_bst) is None
 
     # Verificar la llave máxima de un árbol con 3 nodos
-    assert bst.max_key(three_bst) == 10
+    assert bst.right_key(three_bst) == 10
 
     # Verificar la llave máxima de un árbol con 7 nodos
-    assert bst.max_key(seven_bst) == 70
+    assert bst.right_key(seven_bst) == 70
 
 
 @pytest.mark.skip(reason="No implementado aun")

@@ -186,15 +186,20 @@ def left_key(my_bst):
 
 def left_key_node(root):
     if root['left'] == None:
-        return root
+        return root['key']
     else:
         return left_key_node(root['left'])
 
 def right_key(my_bst):
-    pass
+    if is_empty(my_bst): return None
+    
+    return right_key_node(my_bst['root'])
 
 def right_key_node(root):
-    pass
+    if root['right'] == None:
+        return root['key']
+    else:
+        return right_key_node(root['right'])
 
 def delete_left(my_bst):
     pass
