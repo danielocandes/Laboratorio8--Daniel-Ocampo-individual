@@ -1,4 +1,6 @@
 from . import bst_node as bn
+from DataStructures.List import single_linked_list as sll
+from DataStructures.List import array_list as al
 
 def new_map():
     map = {'root': None,
@@ -140,21 +142,65 @@ def is_empty(my_bst):
     return True if my_bst['root']==None else False
 
 def key_set(my_bst):
-    pass
+    key_list = al.new_list()
+    if is_empty(my_bst): return key_list
+    
+    key_set_tree(my_bst['root']['left'], key_list)
+    al.add_last(key_list, my_bst['root']['key'])
+    key_set_tree(my_bst['root']['right'], key_list)
+    
+    return key_list
+
+def key_set_tree(root, key_list):
+    if root == None: return
+    
+    key_set_tree(root['left'], key_list)
+    al.add_last(key_list, root['key'])
+    key_set_tree(root['right'], key_list)
+    
+    return key_list
 
 def value_set(my_bst):
+    value_list = al.new_list()
+    if is_empty(my_bst): return value_list
+    
+    value_set_tree(my_bst['root']['left'], value_list)
+    al.add_last(value_list, my_bst['root']['value'])
+    value_set_tree(my_bst['root']['right'], value_list)
+    
+    return value_list
+
+def value_set_tree(root, value_list):
+    if root == None: return
+    
+    value_set_tree(root['left'], value_list)
+    al.add_last(value_list, root['value'])
+    value_set_tree(root['right'], value_list)
+    
+    return value_list
+
+def left_key(my_bst):
     pass
 
-def min_key(my_bst):
+def left_key_node(root):
     pass
 
-def max_key(my_bst):
+def right_key(my_bst):
     pass
 
-def delete_min(my_bst):
+def right_key_node(root):
     pass
 
-def delete_max(my_bst):
+def delete_left(my_bst):
+    pass
+
+def delete_left_tree(root):
+    pass
+
+def delete_right(my_bst):
+    pass
+
+def delete_right_tree(root):
     pass
 
 def floor(my_bst, key):
@@ -176,25 +222,6 @@ def keys(my_bst, key_lo, key_hi):
     pass
 
 def values(my_bst, key_lo, key_hi):
-    pass
-
-
-def value_set_tree(root, value_list):
-    pass
-
-def key_set_tree(root, key_list):
-    pass
-
-def min_key_node(root):
-    pass
-
-def max_key_node(root):
-    pass
-
-def delete_min_tree(root):
-    pass
-
-def delete_max_tree(root):
     pass
 
 def floor_key(root, key):

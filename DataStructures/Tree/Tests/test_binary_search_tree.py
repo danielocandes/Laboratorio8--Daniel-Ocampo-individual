@@ -256,7 +256,7 @@ def test_size():
     assert bst.size(seven_bst) == 7
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_is_empty():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -268,7 +268,7 @@ def test_is_empty():
     assert not bst.is_empty(three_bst)
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_key_set():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -288,7 +288,7 @@ def test_key_set():
     assert key_set["elements"][2] == 10
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_value_set():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
