@@ -154,19 +154,18 @@ def test_get():
 
     # Obtener un valor de un árbol vacío
     assert bst.get(empty_bst, 1) is None
-    print ('test 1 passed')
+    
     # Obtener un valor de un árbol con 3 nodos
     assert bst.get(three_bst, 1) == 10
     assert bst.get(three_bst, 5) == 50
     assert bst.get(three_bst, 10) == 100
-    print ('test 2 passed')
     
     # Obtener un valor que no existe en un árbol con 3 nodos
     assert bst.get(three_bst, 0) is None
     assert bst.get(three_bst, 15) is None
-    print ('test 3 passed')
 
-@pytest.mark.skip(reason="No implementado aun")
+
+#@pytest.mark.skip(reason="No implementado aun")
 def test_remove():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -176,22 +175,25 @@ def test_remove():
     bst.remove(empty_bst, 1)
 
     assert empty_bst["root"] is None
-
+    print ('test 1 passed')
+    
     # Eliminar un valor de un árbol con 3 nodos
     bst.remove(three_bst, 1)
-
+    
     assert three_bst["root"]["size"] == 2
     assert three_bst["root"]["left"] is None
     assert three_bst["root"]["right"]["key"] == 10
     assert three_bst["root"]["right"]["value"] == 100
     assert three_bst["root"]["right"]["size"] == 1
-
+    print ('test 2 passed')
+    
     # Eliminar un valor que no existe en un árbol con 3 nodos
     bst.remove(three_bst, 0)
 
     assert three_bst["root"]["size"] == 2
     assert three_bst["root"]["left"] is None
     assert three_bst["root"]["right"] is not None
+    print ('test 3 passed')
 
     # Eliminar un valor que no existe en un árbol con 7 nodos
     bst.remove(seven_bst, 0)
@@ -199,6 +201,7 @@ def test_remove():
     assert seven_bst["root"]["size"] == 7
     assert seven_bst["root"]["left"] is not None
     assert seven_bst["root"]["right"] is not None
+    print ('test 4 passed')
 
     # Eliminar una hoja de un árbol con 7 nodos
     bst.remove(seven_bst, 10)
@@ -206,17 +209,18 @@ def test_remove():
     assert seven_bst["root"]["size"] == 6
     assert seven_bst["root"]["left"]["left"] is None
     assert seven_bst["root"]["left"]["right"] is not None
+    print ('test 5 passed')
 
     # Eliminar un nodo con un hijo de un árbol con 7 nodos
     bst.remove(seven_bst, 60)
-
+    print ('\n', seven_bst)
     assert seven_bst["root"]["size"] == 5
     assert seven_bst["root"]["right"]["right"] is None
     assert seven_bst["root"]["right"]["left"] is not None
     assert seven_bst["root"]["right"]["key"] == 70
     assert seven_bst["root"]["right"]["size"] == 2
     assert seven_bst["root"]["right"]["left"]["key"] == 50
-
+    print ('test 6 passed')
 
 @pytest.mark.skip(reason="No implementado aun")
 def test_contains():

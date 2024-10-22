@@ -42,19 +42,10 @@ def insert_node(root, key, value):
     return root 
 
 def get(my_bst, key):
-    if my_bst['root'] == None:
-        return None
+    return get_node(my_bst['root'], key)
     
-    comparison = default_compare(key, bn.get_key(my_bst['root']))
-    if comparison == 0:
-        return my_bst['root']['value']
-    else:
-        return get_node(my_bst['root'], key)
-
 def get_node(root, key):
-    if root == None:
-        return None
-    
+
     comparison = default_compare(key, bn.get_key(root))
     if comparison == 0:
         return root['value']
@@ -66,7 +57,61 @@ def get_node(root, key):
         return None
 
 def remove(my_bst, key):
-    pass
+    remove_node(my_bst['root'], key)
+    return my_bst
+
+def remove_node(root, key):
+    if root == None:
+        return root
+    
+    comparison = default_compare(key, bn.get_key(root))
+    if comparison == 0:
+        if root['left'] != None:
+            return root['left']
+        else:
+            return root['right']
+    
+    elif comparison == -1:
+        if root['left'] != None:
+            old_size = root['left']['size']
+            removal = removal_node_check(root, key, 'left')
+            
+            if old_size > removal['size']:
+                root['size'] -= 1
+        
+        return root
+        
+    elif comparison == 1:
+        if root['right'] != None:
+            old_size = root['right']['size']
+            removal = removal_node_check(root, key, 'right')
+            
+            if old_size > removal['size']:
+                root['size'] -= 1
+        
+        return root
+            
+def removal_node_check(root, key, direction):
+    comparison = default_compare(key, bn.get_key(root[direction]))
+    
+    if comparison == 0:
+        if root[direction]['size'] == 1:
+            root[direction] = None
+        elif (root[direction]['left'] != None) ^ (root[direction]['right'] != None):
+            root[direction] = remove_node(root[direction], key)
+        else:
+            current_root = root[direction]['right']
+            if current_root['size'] == 1:
+                current_root['left'] = root[direction]['left']
+                current_root['size'] += 1
+                root[direction] = current_root
+            else:
+                pass
+                
+        root['size'] -= 1
+        return root
+    else:
+        return remove_node(root[direction], key)
 
 def contains(my_bst, key):
     pass
@@ -116,8 +161,7 @@ def keys(my_bst, key_lo, key_hi):
 def values(my_bst, key_lo, key_hi):
     pass
 
-def remove_node(root, key):
-    pass
+
 
 def size_tree(root):
     pass
