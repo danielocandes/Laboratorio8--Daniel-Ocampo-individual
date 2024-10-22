@@ -368,19 +368,19 @@ def test_delete_min():
     assert seven_bst["root"]["left"]["right"] is not None
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_delete_max():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
     seven_bst = setup_seven_nodes()
 
     # Eliminar la llave máxima de un árbol vacío
-    bst.delete_max(empty_bst)
+    bst.delete_right(empty_bst)
 
     assert empty_bst["root"] is None
 
     # Eliminar la llave máxima de un árbol con 3 nodos
-    bst.delete_max(three_bst)
+    bst.delete_right(three_bst)
 
     assert three_bst["root"]["size"] == 2
     assert three_bst["root"]["left"]["key"] == 1
@@ -389,7 +389,7 @@ def test_delete_max():
     assert three_bst["root"]["right"] is None
 
     # Eliminar la llave máxima de un árbol con 7 nodos
-    bst.delete_max(seven_bst)
+    bst.delete_right(seven_bst)
 
     assert seven_bst["root"]["size"] == 6
     assert seven_bst["root"]["right"]["right"] is None
@@ -399,7 +399,7 @@ def test_delete_max():
     assert seven_bst["root"]["right"]["left"]["key"] == 50
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_floor():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()

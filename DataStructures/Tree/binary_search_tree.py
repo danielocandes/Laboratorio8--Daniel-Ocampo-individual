@@ -207,25 +207,57 @@ def delete_left(my_bst):
     if size(my_bst) <= 1: return my_bst
     
     delete_left_tree(my_bst['root'])
-    print (my_bst)
     return my_bst
     
 def delete_left_tree(root):
-    if root['left']['left'] == None:
-        root['left'] = None
+    if root['left'] == None:
+        root = None
         return root
     else:
-        root['size']-=1
-        return delete_left_tree(root['left'])
+        root['left'] = delete_left_tree(root['left'])
+        root['size'] -= 1
+        return root
 
 def delete_right(my_bst):
-    pass
+    if size(my_bst) <= 1: return my_bst
+    
+    delete_right_tree(my_bst['root'])
+    return my_bst
 
 def delete_right_tree(root):
-    pass
+    if root['right'] == None:
+        root = None
+        return root
+    else:
+        root['right'] = delete_right_tree(root['right'])
+        root['size'] -= 1
+        return root
 
 def floor(my_bst, key):
-    pass
+    if is_empty(my_bst): return None
+    
+    result = floor_key(my_bst['root'], key)
+    print (result)
+    return result
+
+def floor_key(root, key):
+    comparison = default_compare(key, root['key'])
+    print ('\n',root['key'], key, comparison)
+    
+    if comparison == 0:
+        return key
+    elif comparison == 1:
+        if root['right'] != None:
+            return floor_key(root['right'], key)
+        else:
+            return root['key']
+    elif comparison == -1:
+        if root['left'] != None:
+            return floor_key(root['left'], key)
+        else:
+            return None
+    
+    
 
 def ceiling(my_bst, key):
     pass
@@ -243,9 +275,6 @@ def keys(my_bst, key_lo, key_hi):
     pass
 
 def values(my_bst, key_lo, key_hi):
-    pass
-
-def floor_key(root, key):
     pass
 
 def ceiling_key(root, key):
