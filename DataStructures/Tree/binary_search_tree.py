@@ -179,6 +179,7 @@ def value_set_tree(root, value_list):
     
     return value_list
 
+
 def left_key(my_bst):
     if is_empty(my_bst): return None
     
@@ -201,11 +202,21 @@ def right_key_node(root):
     else:
         return right_key_node(root['right'])
 
-def delete_left(my_bst):
-    pass
 
+def delete_left(my_bst):
+    if size(my_bst) <= 1: return my_bst
+    
+    delete_left_tree(my_bst['root'])
+    print (my_bst)
+    return my_bst
+    
 def delete_left_tree(root):
-    pass
+    if root['left']['left'] == None:
+        root['left'] = None
+        return root
+    else:
+        root['size']-=1
+        return delete_left_tree(root['left'])
 
 def delete_right(my_bst):
     pass
