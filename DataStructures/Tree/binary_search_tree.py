@@ -347,16 +347,48 @@ def height_tree(root):
     return max(left_side, right_side)
 
 def keys(my_bst, key_lo, key_hi):
-    pass
-
-def values(my_bst, key_lo, key_hi):
-    pass
+    key_list = al.new_list()
+    if is_empty(my_bst): return key_list
+    
+    return keys_range(my_bst['root'], key_lo, key_hi, key_list)
 
 def keys_range(root, key_lo, key_hi, list_key):
-    pass
+    if root == None: return None
+    low_comparison = default_compare(key_lo, root['key'])
+    hi_comparison = default_compare(key_hi, root['key'])
+    
+    if low_comparison == -1:
+        keys_range(root['left'], key_lo, key_hi, list_key)
+    
+    if low_comparison == -1 and hi_comparison == 1 or low_comparison == 0 or hi_comparison == 0:
+        al.add_last(list_key, root['key'])
+    
+    if hi_comparison == 1:
+        keys_range(root['right'], key_lo, key_hi, list_key)
+    
+    return list_key
+
+def values(my_bst, key_lo, key_hi):
+    value_list = al.new_list()
+    if is_empty(my_bst): return value_list
+    
+    return values_range(my_bst['root'], key_lo, key_hi, value_list)
 
 def values_range(root, key_lo, key_hi, list_values):
-    pass
+    if root == None: return None
+    low_comparison = default_compare(key_lo, root['key'])
+    hi_comparison = default_compare(key_hi, root['key'])
+    
+    if low_comparison == -1:
+        values_range(root['left'], key_lo, key_hi, list_values)
+    
+    if low_comparison == -1 and hi_comparison == 1 or low_comparison == 0 or hi_comparison == 0:
+        al.add_last(list_values, root['value'])
+    
+    if hi_comparison == 1:
+        values_range(root['right'], key_lo, key_hi, list_values)
+    
+    return list_values
 
 def default_compare(key, element):
     if element == None:

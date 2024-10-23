@@ -527,7 +527,7 @@ def test_height():
     assert bst.height(unbalanced_bst) == 5
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_keys():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
@@ -560,7 +560,7 @@ def test_keys():
     assert keys["elements"][6] == 70
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_values():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
