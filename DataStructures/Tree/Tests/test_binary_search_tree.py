@@ -502,7 +502,7 @@ def test_rank():
     assert bst.rank(seven_bst, 75) == 7
 
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_height():
     empty_bst = setup_tests()
     one_bst = setup_one_node()

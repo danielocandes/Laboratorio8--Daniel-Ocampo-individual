@@ -329,15 +329,27 @@ def rank_keys(root, key):
         return count
 
 def height(my_bst):
-    pass
+    if is_empty(my_bst): return -1
+    
+    return height_tree(my_bst['root'])
+
+def height_tree(root):
+    if root == None: return 0
+    left_side = 0
+    right_side = 0
+    
+    if root['left'] != None:
+        left_side += height_tree(root['left']) + 1
+    
+    if root['right'] != None:
+        right_side += height_tree(root['right']) + 1
+        
+    return max(left_side, right_side)
 
 def keys(my_bst, key_lo, key_hi):
     pass
 
 def values(my_bst, key_lo, key_hi):
-    pass
-
-def height_tree(root):
     pass
 
 def keys_range(root, key_lo, key_hi, list_key):
