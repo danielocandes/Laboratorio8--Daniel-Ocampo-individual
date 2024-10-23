@@ -315,7 +315,18 @@ def select_key(root, key):
             
 
 def rank(my_bst, key):
-    pass
+    return rank_keys(my_bst['root'], key)
+
+def rank_keys(root, key):
+    if root == None: return 0
+    
+    count = 0
+    if root['key'] >= key:
+        return rank_keys(root['left'], key)
+    else:
+        count += rank_keys(root['left'], key) + 1
+        count += rank_keys(root['right'], key)
+        return count
 
 def height(my_bst):
     pass
@@ -324,9 +335,6 @@ def keys(my_bst, key_lo, key_hi):
     pass
 
 def values(my_bst, key_lo, key_hi):
-    pass
-
-def rank_keys(root, key):
     pass
 
 def height_tree(root):

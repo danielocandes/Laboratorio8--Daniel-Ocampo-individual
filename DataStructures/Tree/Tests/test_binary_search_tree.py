@@ -474,7 +474,7 @@ def test_select():
     assert bst.select(seven_bst, 7) == None
     print ('test 3 pass')
 
-@pytest.mark.skip(reason="No implementado aun")
+#@pytest.mark.skip(reason="No implementado aun")
 def test_rank():
     empty_bst = setup_tests()
     three_bst = setup_three_nodes()
