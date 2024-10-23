@@ -118,10 +118,10 @@ def add_date_index(datentry, crime):
     offenseIndex = datentry['offenseIndex']
     offentry = lp.get(offenseIndex, crime['OFFENSE_CODE_GROUP'])
     if (offentry is None):
-        # TODO Realice el caso en el que no se encuentre el tipo de crimen
-        lp.put(offenseIndex, crime['OFFENSE_CODE_GROUP'], datentry['lstcrimes'])
+        new_list = al.new_list()
+        al.add_last(new_list, crime)
+        lp.put(offenseIndex, crime['OFFENSE_CODE_GROUP'], new_list)
     else:
-        # TODO Realice el caso en el que se encuentre el tipo de crimen
         al.add_last(offentry, crime)
     return datentry
 
@@ -172,7 +172,7 @@ def index_size(analyzer):
     """
     Numero de elementos en el indice
     """
-    return analyzer['crimes']['size']
+    return bst.size(analyzer['dateIndex'])
 
 
 def min_key(analyzer):
@@ -193,7 +193,14 @@ def get_crimes_by_range(analyzer, initialDate, finalDate):
     """
     Retorna el numero de crimenes en un rago de fechas.
     """
-    return bst.keys(analyzer['dateIndex'], initialDate, finalDate)
+    initialDate = datetime.datetime.strptime(initialDate, '%Y-%m-%d')
+    finalDate = datetime.datetime.strptime(finalDate, '%Y-%m-%d')
+    values = bst.values(analyzer['dateIndex'], initialDate.date(), finalDate.date())
+    total = 0
+    for element in values['elements']:
+        total += element['lstcrimes']['size']
+    
+    return total
 
 
 def get_crimes_by_range_code(analyzer, initialDate, offensecode):
@@ -201,10 +208,11 @@ def get_crimes_by_range_code(analyzer, initialDate, offensecode):
     Para una fecha determinada, retorna el numero de crimenes
     de un tipo especifico.
     """
-    crimedate = bst.get(analyzer['dateIndex'], initialDate)
+    initialDate = datetime.datetime.strptime(initialDate, '%Y-%m-%d')
+    crimedate = bst.get(analyzer['dateIndex'], initialDate.date())
     if crimedate == None: return 0
     
-    crimes = lp.get(crimedate, offensecode)
+    crimes = lp.get(crimedate['offenseIndex'], offensecode)
     if crimes == None: return 0
     
     return crimes['size']
