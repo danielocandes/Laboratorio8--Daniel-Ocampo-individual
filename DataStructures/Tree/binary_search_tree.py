@@ -292,14 +292,19 @@ def select(my_bst, pos):
     if is_empty(my_bst): return None
     #if my_bst['root']['size'] < pos: return None
     
-    return select_key(my_bst['root'], pos)
+    result = select_key(my_bst['root'], pos)
+    
+    if result != None:
+        return result['key']
+    return None
     
 
 def select_key(root, key):
     print (root, key)
     if root == None: return root
-    
-    left_size = size(root['left'])
+    left_size = 0
+    if root['left'] != None:
+        left_size = root['left']['size']
     
     if left_size > key:
         return select_key(root['left'], key)

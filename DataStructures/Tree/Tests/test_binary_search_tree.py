@@ -457,12 +457,13 @@ def test_select():
 
     # Seleccionar de un árbol vacío
     assert bst.select(empty_bst, 1) is None
-
+    print ('test 1 pass')
+    
     # Seleccionar de un árbol con 3 nodos
     assert bst.select(three_bst, 1) == 5
     assert bst.select(three_bst, 2) == 10
     assert bst.select(three_bst, 3) == None
-
+    print ('test 2 pass')
     # Seleccionar de un árbol con 7 nodos
     assert bst.select(seven_bst, 1) == 20
     assert bst.select(seven_bst, 2) == 30
@@ -471,7 +472,7 @@ def test_select():
     assert bst.select(seven_bst, 5) == 60
     assert bst.select(seven_bst, 6) == 70
     assert bst.select(seven_bst, 7) == None
-
+    print ('test 3 pass')
 
 @pytest.mark.skip(reason="No implementado aun")
 def test_rank():
